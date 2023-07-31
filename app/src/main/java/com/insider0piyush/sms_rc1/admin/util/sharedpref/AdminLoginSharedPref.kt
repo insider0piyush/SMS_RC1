@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
+import com.insider0piyush.sms_rc1.admin.AdminLogin
 import com.insider0piyush.sms_rc1.admin.home.AdminHome
 
 class AdminLoginSharedPref(var context: Context) {
@@ -30,6 +31,14 @@ class AdminLoginSharedPref(var context: Context) {
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(i)
         }
+    }
+    fun logOut(){
+        editor.clear()
+        editor.commit()
+        val i : Intent = Intent(context,AdminLogin::class.java).setAction(Intent.ACTION_VIEW)
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        context.startActivity(i)
     }
 
     fun isLogin() : Boolean{

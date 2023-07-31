@@ -17,6 +17,8 @@ class AdminHome : AppCompatActivity() {
 
         sharedPref.checkLogin()
 
-
+        binding.btnSignOut.setOnClickListener {
+            sharedPref.logOut()
+        }
     }
 }
