@@ -3,11 +3,11 @@
     <item
         android:id="@+id/Home"
         android:title="@string/home"
-        android:icon="@drawable/admin_home_res"
+        android:icon="@drawable/main_home"
         android:enabled="true"/>
     <item
         android:id="@+id/Setting"
         android:title="@string/setting"
-        android:icon="@drawable/admin_setting_res"
+        android:icon="@drawable/main_setting"
         android:enabled="true"/>
 </menu>
