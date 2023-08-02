@@ -2,6 +2,7 @@ package com.insider0piyush.sms_rc1.admin.home.user
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -16,6 +17,15 @@ class StudentAdd : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStudentAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val states = resources.getStringArray(R.array.States)
+        val GujaratCities = resources.getStringArray(R.array.GujaratCities)
+
+        val arrayAdapterCity = ArrayAdapter(this,R.layout.material_dropdown_exposedmenu,GujaratCities)
+        val arrayAdapterState = ArrayAdapter(this,R.layout.material_dropdown_exposedmenu,states)
+
+        binding.EditState.setAdapter(arrayAdapterState)
+        binding.EditCity.setAdapter(arrayAdapterCity)
 
         binding.TopAppBar.setOnMenuItemClickListener {
             when (it.itemId) {

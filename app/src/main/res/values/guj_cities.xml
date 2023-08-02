@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="GujaratCities">
+        <item>Ahmedabad</item>
+        <item>Surat</item>
+        <item>Vadodara</item>
+        <item>Rajkot</item>
+        <item>Bhavnagar</item>
+        <item>Jamnagar</item>
+        <item>Gandhinagar</item>
+        <item>Junagadh</item>
+        <item>Kutch</item>
+        <item>Anand</item>
+        <item>Navsari</item>
+        <item>Morbi</item>
+        <item>Kheda</item>
+        <item>Surendranagar</item>
+        <item>Bharuch</item>
+        <item>Mehsana</item>
+        <item>Kutch</item>
+        <item>Porbandar</item>
+        <item>Banaskantha</item>
+        <item>Valsad</item>
+        <item>Valsad</item>
+        <item>Rajkot</item>
+        <item>Gir Somnath</item>
+        <item>Panchmahal</item>
+        <item>Patan</item>
+        <item>Gandhinagar</item>
+        <item>Dahod</item>
+        <item>Botad</item>
+        <item>Amreli</item>
+        <item>Banaskantha</item>
+        <item>Rajkot</item>
+    </string-array>
+</resources>
