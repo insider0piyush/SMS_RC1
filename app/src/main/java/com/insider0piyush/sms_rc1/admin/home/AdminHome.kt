@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.insider0piyush.sms_rc1.R
+import com.insider0piyush.sms_rc1.admin.home.user.FacultyAdd
+import com.insider0piyush.sms_rc1.admin.home.user.StudentAdd
 import com.insider0piyush.sms_rc1.admin.home.util.Admin_in_home
 import com.insider0piyush.sms_rc1.admin.home.util.SettingsActivity
 import com.insider0piyush.sms_rc1.admin.util.sharedpref.AdminLoginSharedPref
@@ -47,9 +49,10 @@ class AdminHome : AppCompatActivity() {
             builder.setItems(user){
                 dialog, it -> when(it){
                     0 -> {
-
+                        startActivity(Intent(context,StudentAdd::class.java).setAction(Intent.ACTION_VIEW))
                     }
                     1 -> {
+                        startActivity(Intent(context,FacultyAdd::class.java).setAction(Intent.ACTION_VIEW))
 
                     }
                 }
