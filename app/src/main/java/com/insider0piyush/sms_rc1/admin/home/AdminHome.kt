@@ -11,6 +11,7 @@ import com.insider0piyush.sms_rc1.admin.home.user.FacultyAdd
 import com.insider0piyush.sms_rc1.admin.home.user.StudentAdd
 import com.insider0piyush.sms_rc1.admin.home.util.Admin_in_home
 import com.insider0piyush.sms_rc1.admin.home.util.SettingsActivity
+import com.insider0piyush.sms_rc1.admin.home.util.manage.AdminManage
 import com.insider0piyush.sms_rc1.admin.util.sharedpref.AdminLoginSharedPref
 import com.insider0piyush.sms_rc1.databinding.AdminHomeBinding
 
@@ -33,6 +34,9 @@ class AdminHome : AppCompatActivity() {
                 }
                 R.id.Setting -> {
                     startActivity(Intent(this,SettingsActivity::class.java).setAction(Intent.ACTION_VIEW))
+                }
+                R.id.Manage -> {
+                    replaceFrag(AdminManage())
                 }
             }
             true
