@@ -12,5 +12,5 @@ data class StudentModel(
     val Address2: String = "",
     val State : String = "",
     val City : String = "",
-    val PostalCode : Int = 0
+    val PostalCode : String = ""
 )
