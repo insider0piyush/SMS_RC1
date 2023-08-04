@@ -7,6 +7,7 @@ data class StudentModel(
     val Email : String = "",
     val DateOfBirth : String = "",
     val Mno : String = "",
+    val Sid: String = "",
     val WebUrl : String = "",
     val Address1 : String = "",
     val Address2: String = "",

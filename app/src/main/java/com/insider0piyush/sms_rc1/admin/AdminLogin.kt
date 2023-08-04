@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.insider0piyush.sms_rc1.R
 import com.insider0piyush.sms_rc1.admin.home.AdminHome
+import com.insider0piyush.sms_rc1.admin.home.user.security.AdminSecurity
 import com.insider0piyush.sms_rc1.admin.util.sharedpref.AdminLoginSharedPref
 import com.insider0piyush.sms_rc1.databinding.AdminLoginBinding
 import com.insider0piyush.sms_rc1.shared.db.AdminSqlite
@@ -29,7 +30,7 @@ class AdminLogin : AppCompatActivity() {
            login()
         }
         binding.NewAdmin.setOnClickListener {
-            startActivity(Intent(this,AdminSignUp::class.java).setAction(Intent.ACTION_VIEW))
+            startActivity(Intent(this,AdminSecurity::class.java).setAction(Intent.ACTION_VIEW))
         }
         binding.topAppBar.setOnMenuItemClickListener {
             when(it.itemId){

@@ -11,7 +11,7 @@ import com.insider0piyush.sms_rc1.shared.model.StudentModel
 class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable = "CREATE TABLE ADMIN (FullName VARCHAR(42),Email VARCHAR(72) PRIMARY KEY, Password VARCHAR(32) ) "
-        val createTableStudentSqlite = "CREATE TABLE STUDENT(FirstName VARCHAR(12) NOT NULL , MiddleName VATCHAR(22) , LastName VARCHAR(17) NOT NULL,Email VARCHAR(52) PRIMARY KEY , DateOfBirth VARCHAR(27) NOT NULL, MobileNumber VARCHAR(15) UNIQUE NOT NULL, WebUrl VARCHAR(128) , Address1 VARCHAR(72) , Address2 VARCHAR(72) , State VARCHAR(17) , City VARCHAR(17) , PostalCode VARCHAR(6))"
+        val createTableStudentSqlite = "CREATE TABLE STUDENT(FirstName VARCHAR(12) NOT NULL , MiddleName VATCHAR(22) , LastName VARCHAR(17) NOT NULL,Email VARCHAR(52) PRIMARY KEY , DateOfBirth VARCHAR(27) NOT NULL, MobileNumber VARCHAR(15) UNIQUE NOT NULL, Sid VARCHAR(6) UNIQUE NOT NULL ,WebUrl VARCHAR(128) , Address1 VARCHAR(72) , Address2 VARCHAR(72) , State VARCHAR(17) , City VARCHAR(17) , PostalCode VARCHAR(6))"
         db?.execSQL(createTable)
         db?.execSQL(createTableStudentSqlite)
 
@@ -43,6 +43,7 @@ class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
         contentValues.put("Email",studentModel.Email)
         contentValues.put("DateOfBirth",studentModel.DateOfBirth)
         contentValues.put("MobileNumber",studentModel.Mno)
+        contentValues.put("Sid",studentModel.Sid)
         contentValues.put("WebUrl",studentModel.WebUrl)
         contentValues.put("Address1",studentModel.Address1)
         contentValues.put("Address2",studentModel.Address2)
@@ -55,6 +56,25 @@ class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
         return success
     }
 
+    fun toCheckRegisterStudentAlreadyExists(Email: String) : Boolean{
+        val db= this.writableDatabase
+        val cursor:Cursor?
+
+        cursor = db.rawQuery("SELECT * FROM STUDENT WHERE Email='$Email' ",null)
+        if(cursor.count>0){
+            return true
+        }
+        return false
+    }
+
+    fun checkStdudentIsValid(Email:String , Password:String ,Sid :String) : Boolean {
+        val db = this.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM STUDENT WHERE SID=$Sid && EMAIL=$Email && PASSWORD=$Password",null)
+        if(cursor.count>0){
+            return true
+        }
+        return false
+    }
     fun toCheckAdminIsValidOrNot(Email : String, Password : String) : Boolean{
         val db = this.writableDatabase
         val cursor: Cursor?

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -51,6 +50,7 @@ class StudentAdd : AppCompatActivity() {
 
         binding.ButtonAddStudent.setOnClickListener {
             registerStudent()
+            finish()
         }
 
         binding.EditDateOfBirth.setOnClickListener {
@@ -65,9 +65,6 @@ class StudentAdd : AppCompatActivity() {
             }
             materialDatePicker.show(supportFragmentManager,"Material date picker")
         }
-        onBackPressedDispatcher.addCallback {
-            studentRegisterDialogs()
-        }
     }
 
     private fun studentRegisterDialogs() {
@@ -76,6 +73,7 @@ class StudentAdd : AppCompatActivity() {
                 .setMessage("Your changes have not been saved")
                 .setPositiveButton("Save") { _, _ ->
                     registerStudent()
+                    finish()
                 }
                 .setNegativeButton("Discard") { _, _ ->
                     showToast("Discard")
@@ -119,27 +117,34 @@ class StudentAdd : AppCompatActivity() {
         }else if(!Patterns.PHONE.matcher(MobileNumber).matches()){
             showToast("Enter valid phone no ")
         }else {
-            val studentModel = StudentModel(Fname, Mname,Lname, Email, DateOfBirth,MobileNumber,WebUrl, Address1, Address2, State, City,PostalCode)
-            val CreateStudent = studentSqlite.registerStudent(studentModel)
-            if(CreateStudent > -1){
-                showToast("Student added successfully")
-                binding.EditFname.text?.clear()
-                binding.EditMname.text?.clear()
-                binding.EditLname.text?.clear()
-                binding.EditEmail.text?.clear()
-                binding.EditDateOfBirth.text?.clear()
-                binding.EditMobilePhone.text?.clear()
-                binding.EditWebsiteLink.text?.clear()
-                binding.EditTextAddress.text?.clear()
-                binding.EditAddress2.text?.clear()
-                binding.EditState.text.clear()
-                binding.EditCity.text.clear()
-                binding.EditPincode.text?.clear()
+            val checkStudentEntry = studentSqlite.toCheckRegisterStudentAlreadyExists(Email)
+            if(!checkStudentEntry){
+                val studentModel = StudentModel(Fname, Mname,Lname, Email, DateOfBirth,MobileNumber,WebUrl, Address1, Address2, State, City,PostalCode)
+                val CreateStudent = studentSqlite.registerStudent(studentModel)
+                if(CreateStudent > -1){
+                    showToast("Student added successfully")
+                    binding.EditFname.text?.clear()
+                    binding.EditMname.text?.clear()
+                    binding.EditLname.text?.clear()
+                    binding.EditEmail.text?.clear()
+                    binding.EditDateOfBirth.text?.clear()
+                    binding.EditMobilePhone.text?.clear()
+                    binding.EditWebsiteLink.text?.clear()
+                    binding.EditTextAddress.text?.clear()
+                    binding.EditAddress2.text?.clear()
+                    binding.EditState.text.clear()
+                    binding.EditCity.text.clear()
+                    binding.EditPincode.text?.clear()
+                }else{
+                    showToast("Something went wrong")
+                }
             }else{
-                showToast("Something went wrong")
+                showToast("Student email already exits")
             }
         }
     }
+
+
 
     private fun showToast(str : String){
         Toast.makeText(applicationContext,str,Toast.LENGTH_SHORT).show()

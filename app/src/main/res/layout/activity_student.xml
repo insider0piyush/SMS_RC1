@@ -4,44 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".shared.LoginUser">
+    tools:context=".admin.home.user.login.Student">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/StudentIcImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:menu="@menu/user_menu"
-                />
-        </com.google.android.material.appbar.AppBarLayout>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/LoginPicture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/login"
-        android:layout_marginTop="128dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/UserEmailId"
-        android:layout_width="256dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/email_id"
+        android:src="@drawable/ic_student_ic"
         android:layout_marginTop="42dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginPicture">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/StudentSid"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/StudentSid"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/sid"
+        android:layout_marginTop="42dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StudentIcImage">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EditSid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/StudentEmailId"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/email_id"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/StudentSid">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/EditEmail"
             android:layout_width="match_parent"
@@ -50,14 +50,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/UserPassword"
+        android:id="@+id/StudentPassword"
         android:layout_width="256dp"
         android:layout_height="wrap_content"
         android:hint="@string/password"
         android:layout_marginTop="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserEmailId">
+        app:layout_constraintTop_toBottomOf="@+id/StudentEmailId">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/EditPassword"
             android:layout_width="match_parent"
@@ -75,7 +75,7 @@
         android:stateListAnimator="@null"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/StudentPassword" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/ForgotPassword"
@@ -86,6 +86,22 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        style="@style/Widget.Material3.Button.OutlinedButton"/>
+        style="@style/Widget.Material3.Button.TextButton"/>
 
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:menu="@menu/common_menu"/>
+        </com.google.android.material.appbar.AppBarLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

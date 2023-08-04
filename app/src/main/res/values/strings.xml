@@ -52,4 +52,14 @@
     <string name="city">City</string>
     <string name="postal_code">Postal code</string>
     <string name="manage">Manage</string>
+    <string name="userprofile">UserProfile</string>
+    <string name="student_get_started">Student</string>
+    <string name="faculty_get_started">Faculty</string>
+    <string name="who_are_you">Who are you ?</string>
+    <string name="sid">Sid</string>
+    <string name="student_identification_number">Student Identification Number</string>
+    <string name="skip">Skip</string>
+    <string name="security_check">Security Check !</string>
+    <string name="registration_no">Org Registration No</string>
+    <string name="next">Next</string>
 </resources>

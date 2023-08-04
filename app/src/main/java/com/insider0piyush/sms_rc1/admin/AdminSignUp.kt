@@ -19,6 +19,8 @@ class AdminSignUp : AppCompatActivity() {
         setContentView(binding.root)
         adminSqlite = AdminSqlite(this)
 
+        getDataFromSecurityCheckUsers()
+
         binding.btnSignUp.setOnClickListener {
             adminSignUp()
         }
@@ -26,6 +28,13 @@ class AdminSignUp : AppCompatActivity() {
         binding.alreadyHaveAnAccount.setOnClickListener {
             startActivity(Intent(this,AdminLogin::class.java).setAction(Intent.ACTION_VIEW))
         }
+    }
+
+    private fun getDataFromSecurityCheckUsers() {
+        val email = intent.getStringExtra("email")
+        val fullname = intent.getStringExtra("fullname")
+        binding.EditEmail.setText(email)
+        binding.EditFullName.setText(fullname)
     }
 
     private fun adminSignUp(){

@@ -269,6 +269,45 @@
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/LayoutSid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/LayoutMno">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/sid"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="0dp"
+                    app:layout_constraintStart_toStartOf="@id/LayoutSid"
+                    app:layout_constraintBottom_toBottomOf="@id/LayoutSid"
+                    app:layout_constraintTop_toTopOf="@id/LayoutSid"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/Sid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/student_identification_number"
+                    android:layout_marginStart="42dp"
+                    android:layout_marginEnd="32dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/LayoutSid">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/EditSid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/LayoutLink"
@@ -280,7 +319,7 @@
                 android:layout_marginBottom="10dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/LayoutMno">
+                app:layout_constraintTop_toBottomOf="@id/LayoutSid">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="wrap_content"
