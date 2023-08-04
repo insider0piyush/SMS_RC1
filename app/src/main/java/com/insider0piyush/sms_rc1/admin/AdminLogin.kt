@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+import com.insider0piyush.sms_rc1.MainActivity
 import com.insider0piyush.sms_rc1.R
 import com.insider0piyush.sms_rc1.admin.home.AdminHome
 import com.insider0piyush.sms_rc1.admin.home.user.security.AdminSecurity
@@ -41,8 +43,15 @@ class AdminLogin : AppCompatActivity() {
             false
         }
         if(sharedPref.isLogin()){
-            startActivity(Intent(applicationContext,AdminHome::class.java).setAction(Intent.ACTION_VIEW).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+            startActivity(Intent(applicationContext,AdminHome::class.java)
+                .setAction(Intent.ACTION_VIEW)
+                .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             finish()
+        }
+
+        onBackPressedDispatcher.addCallback {
+            finish()
+            startActivity(Intent(applicationContext,MainActivity::class.java).setAction(Intent.ACTION_VIEW))
         }
     }
 
@@ -60,7 +69,7 @@ class AdminLogin : AppCompatActivity() {
             val adminIsValidate =
                 adminSqlite.toCheckAdminIsValidOrNot(Email = email, Password = password)
             if (adminIsValidate) {
-                sharedPref.createLogin(email)
+                sharedPref.adminLogin(email)
                 startActivity(Intent(this, AdminHome::class.java).setAction(Intent.ACTION_VIEW))
                 showToast("Login Successfully")
                 binding.EditEmail.text?.clear()

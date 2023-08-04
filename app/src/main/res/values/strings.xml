@@ -62,4 +62,7 @@
     <string name="security_check">Security Check !</string>
     <string name="registration_no">Org Registration No</string>
     <string name="next">Next</string>
+    <string name="signout">SignOut</string>
+    <string name="faculty_identification_no">Faculty identification no</string>
+    <string name="fid">Fid</string>
 </resources>

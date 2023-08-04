@@ -14,17 +14,17 @@ class AdminLoginSharedPref(var context: Context) {
     var MODE_PRIVATE : Int = 0
 
     init {
-        this.sharedPreferences = context.getSharedPreferences("User",MODE_PRIVATE)
+        this.sharedPreferences = context.getSharedPreferences("ADMIN",MODE_PRIVATE)
         this.editor = sharedPreferences.edit()
     }
 
-    fun createLogin(email : String){
+    fun adminLogin(email : String){
         editor.putBoolean("login",true)
         editor.putString("email",email)
         editor.commit()
     }
 
-    fun checkLogin(){
+    fun isAdminLogin(){
         if(!this.isLogin()){
             val i : Intent = Intent(context,AdminHome::class.java).setAction(Intent.ACTION_VIEW)
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -32,7 +32,7 @@ class AdminLoginSharedPref(var context: Context) {
             context.startActivity(i)
         }
     }
-    fun logOut(){
+    fun adminLogOut(){
         editor.clear()
         editor.commit()
         val i : Intent = Intent(context,AdminLogin::class.java).setAction(Intent.ACTION_VIEW)
@@ -40,7 +40,6 @@ class AdminLoginSharedPref(var context: Context) {
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(i)
     }
-
     fun isLogin() : Boolean{
         return  sharedPreferences.getBoolean("login",false)
     }

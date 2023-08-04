@@ -4,35 +4,26 @@
     <value>
       <entry key="app">
         <State>
-          <targetSelectedWithDropDown>
+          <runningDeviceTargetSelectedWithDropDown>
             <Target>
-              <type value="QUICK_BOOT_TARGET" />
+              <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\insider0piyush\.android\avd\Resizable_Experimental_API_34.avd" />
+                  <type value="SERIAL_NUMBER" />
+                  <value value="adb-7HWGFY8XLR85TGR8-JrErzW._adb-tls-connect._tcp" />
                 </Key>
               </deviceKey>
             </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2023-08-03T15:25:04.757270Z" />
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2023-08-04T12:31:39.802012300Z" />
           <multipleDevicesSelectedInDropDown value="true" />
           <runningDeviceTargetsSelectedWithDialog>
             <Target>
               <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\insider0piyush\.android\avd\Resizable_Experimental_API_34.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
                   <type value="SERIAL_NUMBER" />
-                  <value value="127.0.0.1:58526" />
+                  <value value="adb-7HWGFY8XLR85TGR8-JrErzW._adb-tls-connect._tcp" />
                 </Key>
               </deviceKey>
             </Target>

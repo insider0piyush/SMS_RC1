@@ -8,6 +8,7 @@
         android:icon="@drawable/user_account"
         android:enabled="true"
         app:showAsAction="always"/>
+
     <item
         android:id="@+id/Help"
         android:title="@string/help"
@@ -16,5 +17,10 @@
     <item
         android:id="@+id/Feedback"
         android:title="@string/feedback"
+        android:enabled="true"/>
+
+    <item
+         android:id="@+id/SignOut"
+         android:title="@string/signout"
         android:enabled="true"/>
 </menu>

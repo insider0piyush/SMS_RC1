@@ -94,12 +94,14 @@ class StudentAdd : AppCompatActivity() {
         val Email = binding.EditEmail.text.toString()
         val DateOfBirth = binding.EditDateOfBirth.text.toString()
         val MobileNumber = binding.EditMobilePhone.text.toString()
+        val Sid= binding.EditSid.text.toString()
         val WebUrl = binding.EditWebsiteLink.text.toString()
         val Address1 = binding.EditTextAddress.text.toString()
         val Address2 = binding.EditAddress2.text.toString()
         val State = binding.EditState.text.toString()
         val City = binding.EditCity.text.toString()
         val PostalCode = binding.EditPincode.text.toString()
+        val Password = "$Fname@123"
 
 
         if(Fname.isEmpty()){
@@ -116,10 +118,12 @@ class StudentAdd : AppCompatActivity() {
             showToast("Mobile number can't be empty")
         }else if(!Patterns.PHONE.matcher(MobileNumber).matches()){
             showToast("Enter valid phone no ")
-        }else {
+        }else if(Sid.isEmpty()){
+            showToast("Enter your sid")
+        } else {
             val checkStudentEntry = studentSqlite.toCheckRegisterStudentAlreadyExists(Email)
             if(!checkStudentEntry){
-                val studentModel = StudentModel(Fname, Mname,Lname, Email, DateOfBirth,MobileNumber,WebUrl, Address1, Address2, State, City,PostalCode)
+                val studentModel = StudentModel(Fname, Mname,Lname, Email, DateOfBirth,MobileNumber,Sid,WebUrl, Address1, Address2, State, City,PostalCode,Password)
                 val CreateStudent = studentSqlite.registerStudent(studentModel)
                 if(CreateStudent > -1){
                     showToast("Student added successfully")
@@ -129,6 +133,7 @@ class StudentAdd : AppCompatActivity() {
                     binding.EditEmail.text?.clear()
                     binding.EditDateOfBirth.text?.clear()
                     binding.EditMobilePhone.text?.clear()
+                    binding.EditSid.text?.clear()
                     binding.EditWebsiteLink.text?.clear()
                     binding.EditTextAddress.text?.clear()
                     binding.EditAddress2.text?.clear()

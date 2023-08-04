@@ -20,7 +20,7 @@ class AdminHome : AppCompatActivity() {
         binding= AdminHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPref = AdminLoginSharedPref(this)
-        sharedPref.checkLogin()
+        sharedPref.isAdminLogin()
 
         binding.FloatingActionBtn.setOnClickListener {
             selectUser()
@@ -34,7 +34,10 @@ class AdminHome : AppCompatActivity() {
                     showToast("Help")
                 }
                 R.id.Feedback -> {
-                    showToast(("Feedback"))
+                    showToast("Feedback")
+                }
+                R.id.SignOut -> {
+                    sharedPref.adminLogOut()
                 }
             }
             true
