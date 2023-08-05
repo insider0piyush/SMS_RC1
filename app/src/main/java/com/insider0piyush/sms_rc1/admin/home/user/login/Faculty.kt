@@ -22,6 +22,7 @@ class Faculty : AppCompatActivity() {
         setContentView(binding.root)
         adminSqlite = AdminSqlite(this )
         sharedPref = FacultyLoginSharedPref(this)
+
         if(sharedPref.isFacultyLogin()){
             startActivity(Intent(applicationContext,FacultyHome::class.java).setAction(Intent.ACTION_VIEW).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             finish()
@@ -69,6 +70,7 @@ class Faculty : AppCompatActivity() {
         }else{
             val checkStudent = adminSqlite.checkFacultyLogin(Email = email, Password = password, Fid = fid)
             if(checkStudent){
+                sharedPref.facultyLogin(email,fid)
                 binding.EditFid.text?.clear()
                 binding.EditEmail.text?.clear()
                 binding.EditPassword.text?.clear()
