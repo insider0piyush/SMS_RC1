@@ -4,7 +4,10 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
+import com.insider0piyush.sms_rc1.admin.home.user.viewModel.FacultyViewModel
+import com.insider0piyush.sms_rc1.admin.home.user.viewModel.StudentViewModel
 import com.insider0piyush.sms_rc1.admin.util.AdminModel
 import com.insider0piyush.sms_rc1.shared.model.FacultyModel
 import com.insider0piyush.sms_rc1.shared.model.StudentModel
@@ -107,6 +110,39 @@ class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
         return false
     }
 
+    fun getAllStudent() : ArrayList<StudentViewModel>{
+        val studentList : ArrayList<StudentViewModel> = ArrayList()
+        val db = this.writableDatabase
+
+        val cursor: Cursor?
+
+        try {
+            cursor = db.rawQuery("SELECT FirstName,MiddleName,LastName,Email FROM STUDENT ", null)
+        }catch (e:SQLiteException){
+            e.printStackTrace()
+            db.execSQL("SELECT FirstName,MiddleName,LastName,Email FROM STUDENT ")
+            return ArrayList()
+        }
+
+        var studentFirstName : String
+        var studentLastName : String
+        var fullName : String
+        var studentEmail : String
+
+        if(cursor.moveToFirst()){
+            do{
+                studentFirstName = cursor.getString(cursor.getColumnIndex("FirstName"))
+                studentLastName = cursor.getString(cursor.getColumnIndex("LastName"))
+                studentEmail = cursor.getString(cursor.getColumnIndex("Email"))
+                fullName = "$studentFirstName $studentLastName"
+
+                val student = StudentViewModel(fullName,studentEmail)
+                studentList.add(student)
+            }while (cursor.moveToNext())
+        }
+        return studentList
+    }
+
     //Faculty -------------------->
     fun registerFaculty(facultyModel: FacultyModel) : Long {
         val db = this.writableDatabase
@@ -149,5 +185,38 @@ class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
             return true
         }
         return false
+    }
+
+    fun getAllFacultyList() : ArrayList<FacultyViewModel>{
+        val facultyList : ArrayList<FacultyViewModel> = ArrayList()
+        val db = this.writableDatabase
+
+        val cursor: Cursor?
+
+        try {
+           cursor = db.rawQuery("SELECT FirstName,MiddleName,LastName,Email FROM FACULTY ", null)
+        }catch (e:SQLiteException){
+            e.printStackTrace()
+            db.execSQL("SELECT FirstName,MiddleName,LastName,Email FROM FACULTY ")
+            return ArrayList()
+        }
+
+        var facultyFirstName : String
+        var facultyLastName : String
+        var fullName : String
+        var facultyEmail : String
+
+        if(cursor.moveToFirst()){
+            do{
+                facultyFirstName = cursor.getString(cursor.getColumnIndex("FirstName"))
+                facultyLastName = cursor.getString(cursor.getColumnIndex("LastName"))
+                facultyEmail = cursor.getString(cursor.getColumnIndex("Email"))
+                fullName = "$facultyFirstName $facultyLastName"
+
+                val faculty = FacultyViewModel(fullName,facultyEmail)
+                facultyList.add(faculty)
+            }while (cursor.moveToNext())
+        }
+        return facultyList
     }
 }

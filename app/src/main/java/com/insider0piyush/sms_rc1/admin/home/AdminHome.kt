@@ -6,8 +6,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.insider0piyush.sms_rc1.R
+import com.insider0piyush.sms_rc1.admin.home.profile.ProfileAdmin
 import com.insider0piyush.sms_rc1.admin.home.user.FacultyAdd
 import com.insider0piyush.sms_rc1.admin.home.user.StudentAdd
+import com.insider0piyush.sms_rc1.admin.home.user.list.FacultyList
+import com.insider0piyush.sms_rc1.admin.home.user.list.StudentList
 import com.insider0piyush.sms_rc1.admin.util.sharedpref.AdminLoginSharedPref
 import com.insider0piyush.sms_rc1.databinding.AdminHomeBinding
 
@@ -28,7 +31,7 @@ class AdminHome : AppCompatActivity() {
         binding.topAppBar.setOnMenuItemClickListener {
             when(it.itemId){
                 R.id.UserAccountProfile -> {
-                    showToast("work in progress ⌛")
+                    startActivity(Intent(applicationContext,ProfileAdmin::class.java).setAction(Intent.ACTION_VIEW))
                 }
                 R.id.Help -> {
                     showToast("Help")
@@ -41,6 +44,12 @@ class AdminHome : AppCompatActivity() {
                 }
             }
             true
+        }
+        binding.NoOfFaculty.setOnClickListener {
+            startActivity(Intent(applicationContext,FacultyList::class.java).setAction(Intent.ACTION_VIEW))
+        }
+        binding.NoOfStudent.setOnClickListener {
+            startActivity(Intent(applicationContext,StudentList::class.java).setAction(Intent.ACTION_VIEW))
         }
     }
 
