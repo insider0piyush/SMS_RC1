@@ -25,6 +25,7 @@ class AdminHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= AdminHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         sharedPref = AdminLoginSharedPref(this)
         sharedPref.isAdminLogin()
 

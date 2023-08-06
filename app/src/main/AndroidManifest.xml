@@ -13,42 +13,60 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SMS_RC1"
         tools:targetApi="31">
-
-        <activity android:name=".admin.home.user.security.AdminSecurity" android:exported="true" />
-
-        <activity android:name=".super_admin.SuperAdminLogin" android:exported="true" />
-
-        <activity android:name=".admin.home.AdminHome" android:exported="true" />
-
-        <activity android:name=".admin.home.user.list.FacultyList" android:exported="true" />
-
-        <activity android:name=".admin.home.user.list.StudentList" android:exported="true" />
-
-        <activity android:name=".admin.home.user.login.Faculty" android:exported="true" />
-
-        <activity android:name=".admin.home.user.login.Student" android:exported="true" />
-
-        <activity android:name=".admin.home.user.FacultyAdd" android:exported="true" />
-
-        <activity android:name=".admin.home.user.StudentAdd" android:exported="true" />
-
-        <activity android:name=".faculty.FacultyHome" android:exported="true" />
-
-        <activity android:name=".student.StudentHome" android:exported="true" />
-
-        <activity android:name=".admin.AdminLogin" android:exported="true" />
-
-        <activity android:name=".admin.AdminSignUp" android:exported="true" />
-
-        <activity android:name=".home.MainHomeUser" android:exported="true" />
-
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity
+            android:name=".admin.home.user.login.Admin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.home.user.security.AdminSecurity"
+            android:exported="true" />
+        <activity
+            android:name=".super_admin.SuperAdminLogin"
+            android:exported="true" />
+        <activity
+            android:name=".admin.home.AdminHome"
+            android:exported="true" />
+        <activity
+            android:name=".admin.home.user.list.FacultyList"
+            android:exported="true" />
+        <activity
+            android:name=".admin.home.user.list.StudentList"
+            android:exported="true" />
+        <activity
+            android:name=".admin.home.user.login.Faculty"
+            android:exported="true" />
+        <activity
+            android:name=".admin.home.user.login.Student"
+            android:exported="true" />
+        <activity
+            android:name=".admin.home.user.FacultyAdd"
+            android:exported="true" />
+        <activity
+            android:name=".admin.home.user.StudentAdd"
+            android:exported="true" />
+        <activity
+            android:name=".faculty.FacultyHome"
+            android:exported="true" />
+        <activity
+            android:name=".student.StudentHome"
+            android:exported="true" />
+        <activity
+            android:name=".admin.AdminLogin"
+            android:exported="true" />
+        <activity
+            android:name=".admin.AdminSignUp"
+            android:exported="true" />
+        <activity
+            android:name=".home.MainHomeUser"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

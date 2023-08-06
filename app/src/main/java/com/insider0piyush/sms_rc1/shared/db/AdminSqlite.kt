@@ -65,7 +65,6 @@ class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
         return false
     }
 
-
     //Student -------------------->
     fun registerStudent(studentModel: StudentModel) : Long {
         val db = this.writableDatabase
