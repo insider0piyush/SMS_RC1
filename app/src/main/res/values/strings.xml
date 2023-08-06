@@ -67,4 +67,8 @@
     <string name="fid">Fid</string>
     <string name="piyush_makwana">Piyush Makwana</string>
     <string name="insider0piyush_gmail_com">insider0piyush@gmail.com</string>
+    <string name="students">Students</string>
+    <string name="faculties">Faculties</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

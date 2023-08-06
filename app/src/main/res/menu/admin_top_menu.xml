@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <item
-        android:id="@+id/UserAccountProfile"
-        android:title="@string/userprofile"
-        android:icon="@drawable/user_account"
-        android:enabled="true"
-        app:showAsAction="always"/>
-
     <item
         android:id="@+id/Help"
         android:title="@string/help"

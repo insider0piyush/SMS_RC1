@@ -12,7 +12,7 @@ android {
         minSdk = 26
         targetSdk = 34
         versionCode = 1
-        versionName = "8.2.2-RC_405.346.7.4-KOTLIN"
+        versionName = "8.7.6-RC_522.767.4.3-KOTLIN"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
