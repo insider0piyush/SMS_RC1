@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.database.sqlite.SQLiteOpenHelper
 import com.insider0piyush.sms_rc1.admin.home.user.viewModel.FacultyViewModel
+import com.insider0piyush.sms_rc1.admin.home.user.viewModel.GetAdminViewModel
 import com.insider0piyush.sms_rc1.admin.home.user.viewModel.StudentViewModel
 import com.insider0piyush.sms_rc1.admin.util.AdminModel
 import com.insider0piyush.sms_rc1.shared.model.FacultyModel
@@ -63,6 +64,24 @@ class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
             return true
         }
         return false
+    }
+
+    fun getUserDetail(Email : String) : ArrayList<GetAdminViewModel>{
+
+        val admin : ArrayList<GetAdminViewModel> = ArrayList()
+        val db = this.writableDatabase
+        val cursor = db.rawQuery("SELECT * FROM ADMIN WHERE EMAIL = '$Email' ",null)
+
+        if(cursor.moveToNext()){
+            do{
+                var fullname = cursor.getString(cursor.getColumnIndex("FullName"))
+                val email = cursor.getString(cursor.getColumnIndex("Email"))
+
+                val user = GetAdminViewModel(fullname,email)
+                admin.add(user)
+            }while (cursor.moveToNext())
+        }
+        return admin
     }
 
     //Student -------------------->

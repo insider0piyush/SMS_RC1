@@ -2,6 +2,7 @@ package com.insider0piyush.sms_rc1.admin.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -17,11 +18,13 @@ import com.insider0piyush.sms_rc1.admin.home.user.list.FacultyList
 import com.insider0piyush.sms_rc1.admin.home.user.list.StudentList
 import com.insider0piyush.sms_rc1.admin.util.sharedpref.AdminLoginSharedPref
 import com.insider0piyush.sms_rc1.databinding.AdminHomeBinding
+import com.insider0piyush.sms_rc1.shared.db.AdminSqlite
 
 class AdminHome : AppCompatActivity() {
     private lateinit var binding: AdminHomeBinding
     private lateinit var sharedPref: AdminLoginSharedPref
     private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+    private lateinit var adminSqlite: AdminSqlite
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,7 @@ class AdminHome : AppCompatActivity() {
 
         sharedPref = AdminLoginSharedPref(this)
         sharedPref.isAdminLogin()
+        adminSqlite = AdminSqlite(this)
 
         actionBarDrawerToggle = ActionBarDrawerToggle(this,binding.DrawerLayoutAdmin,binding.topAppBar,R.string.open,R.string.close)
         binding.DrawerLayoutAdmin.addDrawerListener(actionBarDrawerToggle)
@@ -50,9 +54,23 @@ class AdminHome : AppCompatActivity() {
         //Update Navigation drawer details
 
         val view : View = binding.AdminNavigationView.getHeaderView(0)
+        val fullName : MaterialTextView = view.findViewById(R.id.AdminFullName)
         val email : MaterialTextView = view.findViewById(R.id.AdminEmailId)
 
-        email.setText(sharedPref.sharedPreferences.getString("email",""))
+        val userEmail  = sharedPref.sharedPreferences.getString("email","")
+
+        if (userEmail != null) {
+            Log.d("email",userEmail)
+            val user =  adminSqlite.getUserDetail(userEmail)
+            Log.d("user",user.toString())                   //[GetAdminViewModel(FullName=Your Full name, Email=Your Email)]
+            Log.d("userCount",user.size.toString())         //1
+            Log.d("userName",user[0].FullName)              //FullName
+            Log.d("userName",user[0].Email)                 //Email
+            fullName.text = user[0].FullName
+            email.text = user[0].Email
+        }
+
+
 
 
         binding.FloatingActionBtn.setOnClickListener {
