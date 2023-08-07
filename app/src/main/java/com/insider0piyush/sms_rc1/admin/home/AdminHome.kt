@@ -3,11 +3,13 @@ package com.insider0piyush.sms_rc1.admin.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textview.MaterialTextView
 import com.insider0piyush.sms_rc1.R
 import com.insider0piyush.sms_rc1.admin.home.user.FacultyAdd
 import com.insider0piyush.sms_rc1.admin.home.user.StudentAdd
@@ -44,6 +46,14 @@ class AdminHome : AppCompatActivity() {
             }
             true
         }
+
+        //Update Navigation drawer details
+
+        val view : View = binding.AdminNavigationView.getHeaderView(0)
+        val email : MaterialTextView = view.findViewById(R.id.AdminEmailId)
+
+        email.setText(sharedPref.sharedPreferences.getString("email",""))
+
 
         binding.FloatingActionBtn.setOnClickListener {
             selectUser()
