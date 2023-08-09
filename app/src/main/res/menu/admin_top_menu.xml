@@ -10,9 +10,4 @@
         android:id="@+id/Feedback"
         android:title="@string/feedback"
         android:enabled="true"/>
-
-    <item
-         android:id="@+id/SignOut"
-         android:title="@string/signout"
-        android:enabled="true"/>
 </menu>

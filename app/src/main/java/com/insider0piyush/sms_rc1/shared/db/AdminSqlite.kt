@@ -15,7 +15,7 @@ import com.insider0piyush.sms_rc1.shared.model.StudentModel
 
 class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTable = "CREATE TABLE ADMIN (FullName VARCHAR(42),Email VARCHAR(72) PRIMARY KEY, Password VARCHAR(32) ) "
+        val createTable = "CREATE TABLE ADMIN (FullName VARCHAR(42),Email VARCHAR(256) PRIMARY KEY, Password VARCHAR(32) ) "
         val createTableStudentSqlite = "CREATE TABLE STUDENT(FirstName VARCHAR(12) NOT NULL , MiddleName VATCHAR(22) , LastName VARCHAR(17) NOT NULL,Email VARCHAR(52) PRIMARY KEY , DateOfBirth VARCHAR(27) NOT NULL, MobileNumber VARCHAR(15) UNIQUE NOT NULL, Sid VARCHAR(6) UNIQUE NOT NULL ,WebUrl VARCHAR(128) , Address1 VARCHAR(72) , Address2 VARCHAR(72) , State VARCHAR(17) , City VARCHAR(17) , PostalCode VARCHAR(6) , Password VARCHAR(42))"
         val createTableFacultySqlite = "CREATE TABLE FACULTY(FirstName VARCHAR(12) NOT NULL , MiddleName VATCHAR(22) , LastName VARCHAR(17) NOT NULL,Email VARCHAR(52) PRIMARY KEY , DateOfBirth VARCHAR(27) NOT NULL, MobileNumber VARCHAR(15) UNIQUE NOT NULL, Fid VARCHAR(6) UNIQUE NOT NULL ,WebUrl VARCHAR(128) , Address1 VARCHAR(72) , Address2 VARCHAR(72) , State VARCHAR(17) , City VARCHAR(17) , PostalCode VARCHAR(6) , Password VARCHAR(42))"
         db?.execSQL(createTable)
@@ -84,6 +84,18 @@ class AdminSqlite(con : Context) : SQLiteOpenHelper(con,"SMS_RC1",null,1) {
         return admin
     }
 
+    fun updateAdminData(getAdminViewModel: GetAdminViewModel): Int {
+        val db = this.writableDatabase
+
+        val contentValues = ContentValues()
+        contentValues.put("FullName",getAdminViewModel.FullName)
+        contentValues.put("Email",getAdminViewModel.Email)
+        val email = getAdminViewModel.Email
+
+        val queryExe = db.update("ADMIN",contentValues,"Email = "+ "'$email'",null)
+        db.close()
+        return queryExe
+    }
     //Student -------------------->
     fun registerStudent(studentModel: StudentModel) : Long {
         val db = this.writableDatabase

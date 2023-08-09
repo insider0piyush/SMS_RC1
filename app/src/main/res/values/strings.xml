@@ -71,4 +71,7 @@
     <string name="faculties">Faculties</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="account">Account</string>
+    <string name="update">Update</string>
 </resources>

@@ -12,6 +12,7 @@ import androidx.core.view.GravityCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textview.MaterialTextView
 import com.insider0piyush.sms_rc1.R
+import com.insider0piyush.sms_rc1.admin.home.profile.edit.EditAdminProfile
 import com.insider0piyush.sms_rc1.admin.home.user.FacultyAdd
 import com.insider0piyush.sms_rc1.admin.home.user.StudentAdd
 import com.insider0piyush.sms_rc1.admin.home.user.list.FacultyList
@@ -43,6 +44,17 @@ class AdminHome : AppCompatActivity() {
 
         binding.AdminNavigationView.setNavigationItemSelectedListener {
             when(it.itemId){
+
+                R.id.edtProfile -> {
+                    startActivity(Intent(applicationContext,EditAdminProfile::class.java).setAction(Intent.ACTION_VIEW))
+                    binding.DrawerLayoutAdmin.closeDrawer(GravityCompat.START)
+                }
+
+                R.id.SignOut -> {
+                    sharedPref.adminLogOut()
+                    binding.DrawerLayoutAdmin.closeDrawer(GravityCompat.START)
+                }
+
                 R.id.Setting -> {
                     showToast("Setting")
                     binding.DrawerLayoutAdmin.closeDrawer(GravityCompat.START)
@@ -78,17 +90,11 @@ class AdminHome : AppCompatActivity() {
         }
         binding.topAppBar.setOnMenuItemClickListener {
             when(it.itemId){
-                R.id.UserAccountProfile -> {
-                    showToast("work in progress ⌛")
-                }
                 R.id.Help -> {
                     showToast("Help")
                 }
                 R.id.Feedback -> {
                     showToast("Feedback")
-                }
-                R.id.SignOut -> {
-                    sharedPref.adminLogOut()
                 }
             }
             true

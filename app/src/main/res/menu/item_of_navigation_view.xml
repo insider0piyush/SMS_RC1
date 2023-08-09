@@ -3,12 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="AdminNavigationView">
 
+    <item android:title="@string/account">
+        <menu>
+            <item
+                android:id="@+id/edtProfile"
+                android:icon="@drawable/edit_profile"
+                android:title="@string/edit_profile"
+                android:enabled="true"/>
+            <item
+                android:id="@+id/SignOut"
+                android:title="@string/sign_out"
+                android:icon="@drawable/logout"
+                android:enabled="true"/>
+        </menu>
+    </item>
+
     <item android:title="@string/manage">
         <menu>
             <item
                 android:id="@+id/Setting"
                 android:title="@string/setting"
-                android:icon="@drawable/main_setting"/>
+                android:icon="@drawable/setting_filled"
+                android:enabled="true"/>
         </menu>
     </item>
 </menu>
